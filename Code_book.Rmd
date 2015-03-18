@@ -1,6 +1,8 @@
 ---
 title: "Code_book"
 author: "Alexander Bukreev"
+e-mail: datasattva@yandex.com
+location: Beijing, China
 date: "March 2015"
 ---
 
@@ -16,7 +18,7 @@ https://d396qusza40orc.cloudfront.net/getdata%2Fprojectfiles%2FUCI%20HAR%20Datas
 
 For correct opening of file **Data_set_mean.txt** on your computer in R, copy it into the *work directory* and open use code:
 
-```{r,message=FALSE,error=FALSE}
+```{r,message=FALSE, message=FALSE}
 Data_set_mean <- read.table("Data_set_mean.txt", header = TRUE)
 
 View(Data_set_mean)
@@ -135,5 +137,3 @@ Finally, we have 33*2 = 66 variables in the table, which correspond its columns:
 - [64] mean(fBodyBodyGyroMag-std())    
 - [65] mean(fBodyBodyGyroJerkMag-mean())
 - [66] mean(fBodyBodyGyroJerkMag-std())
-
-*Alexander Bukreev, Beijing, 2015. E-mail: datasattva@yandex.com*

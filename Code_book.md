@@ -1,6 +1,8 @@
 ---
 title: "Code_book"
 author: "Alexander Bukreev"
+e-mail: datasattva@yandex.com
+location: Beijing, China
 date: "March 2015"
 ---
 
@@ -136,5 +138,3 @@ Finally, we have 33*2 = 66 variables in the table, which correspond its columns:
 - [64] mean(fBodyBodyGyroMag-std())    
 - [65] mean(fBodyBodyGyroJerkMag-mean())
 - [66] mean(fBodyBodyGyroJerkMag-std())
-
-*Alexander Bukreev, Beijing, 2015. E-mail: datasattva@yandex.com*
