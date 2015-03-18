@@ -2,7 +2,6 @@
 title: "README"
 author: "Alexander Bukreev"
 date: "March 2015"
-output: html_document
 ---
 
 This is a README file for **Course Project** for the course [Getting and Cleaning Data](https://class.coursera.org/getdata-012). Getting and Cleaning Data is the part of the program [Data Science Specialization 
