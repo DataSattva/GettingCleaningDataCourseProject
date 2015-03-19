@@ -43,12 +43,12 @@ Below there is a description that explain what the analysis file did in RStudio.
 1. Merges the training and the test sets to create one data set
 ---
 
-After revising descriptions to raw data (see *README.txt* in *UCI HAR Dataset*) and their structure in TextWrangler, *text* and *train* files were used as a raw data, *text/Inertial Signals* and *train/Inertial Signals* sub-folders data were not used, as they do not include mean and standard deviation for each measurement. 
+All row data of this zip-arhive is in the *UCI HAR Dataset* folder. After revising descriptions to raw data (see *README.txt* in *UCI HAR Dataset*) and their structure in TextWrangler test editor, files from *text* and *train* folders were used as a raw data, *text/Inertial Signals* and *train/Inertial Signals* sub-folders data were not used, as they do not include mean and standard deviation for each measurement.  That is why variables values only from the list *features.txt* were used for the analysis, they are marked in the following way:
 
 - *mean(): Mean value*
 - *std(): Standard deviation*
 
-This is a set of variables we need -- *features.txt*  (see *features_info.txt*).
+(see *features_info.txt* file from *UCI HAR Dataset* folder for more information about this).
 
 ### 1.1 Download data to R from *test* folder
 
