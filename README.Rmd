@@ -52,8 +52,7 @@ This is a set of variables we need -- *features.txt*  (see *features_info.txt*).
 
 ### 1.1 Download data to R from *test* folder
 
-
-```r
+```{r, cache=TRUE}
 ## download data from UCI HAR Dataset/test/X_test.txt
 X_test <- read.table("UCI HAR Dataset/test/X_test.txt", sep = "", header = FALSE)
 
@@ -66,8 +65,7 @@ y_test <- read.table("UCI HAR Dataset/test/y_test.txt", sep = "", header = FALSE
 
 ### 1.2 Download data to R from *train* folder
 
-
-```r
+```{r, cache=TRUE}
 ## download data from UCI HAR Dataset/train/X_train.txt 
 X_train <- read.table("UCI HAR Dataset/train/X_train.txt", sep = "", header = FALSE)
 
@@ -80,8 +78,7 @@ y_train <- read.table("UCI HAR Dataset/train/y_train.txt", sep = "", header = FA
 
 ### 1.3 Merges the training and the test sets to create one data set
 
-
-```r
+```{r,cache=TRUE}
 ##  Merges the test sets
 X_test_full <- cbind(subject_test, y_test, X_test)
 
@@ -94,45 +91,27 @@ Data_set <- rbind(X_test_full, X_train_full)
 
 After merging there appeared **Data_set** *data.frame* with dimension:
 
-
-```r
+```{r,cache=TRUE}
 dim(Data_set)
-```
-
-```
-## [1] 10299   563
 ```
 
 2. Extracts only the measurements on the mean and standard deviation for each measurement
 ---
 
-
-```r
+```{r,cache=TRUE}
 ## download feature labels from features.txt from root "UCI HAR Dataset" folder into R
 features_full <- read.table("UCI HAR Dataset/features.txt", sep = "", header = FALSE)
 ```
 
 The resulting table is **features_full**, and it contains the list of all *features*, which will be used as feature titles for naming 561 column of **Data_set**.
 
-
-```r
+```{r,cache=TRUE}
 tail(features_full)
-```
-
-```
-##      V1                                   V2
-## 556 556 angle(tBodyAccJerkMean),gravityMean)
-## 557 557     angle(tBodyGyroMean,gravityMean)
-## 558 558 angle(tBodyGyroJerkMean,gravityMean)
-## 559 559                 angle(X,gravityMean)
-## 560 560                 angle(Y,gravityMean)
-## 561 561                 angle(Z,gravityMean)
 ```
 
 According to *features_info.txt* mean and standard deviation values are labelled in *features.txt* using *"-mean()"* and *"-std()"*. Use *grepl()* function for finding lines in the column *V2* **features_full**, containing *"-mean()"* and *"-std()"*; and write the result logical vector in the new column *"Mean_Std"*. 
 
-
-```r
+```{r,cache=TRUE}
 ## transfer from factor to character
 features_full$V2 <- as.character(features_full$V2)
 
@@ -142,72 +121,40 @@ features_full$Mean_Std <- ifelse(grepl("-mean()", features_full$V2, fixed = TRUE
 
 Here is the resulted table:
 
-
-```r
+```{r,cache=TRUE}
 head(features_full, 8)
-```
-
-```
-##   V1                V2 Mean_Std
-## 1  1 tBodyAcc-mean()-X     TRUE
-## 2  2 tBodyAcc-mean()-Y     TRUE
-## 3  3 tBodyAcc-mean()-Z     TRUE
-## 4  4  tBodyAcc-std()-X     TRUE
-## 5  5  tBodyAcc-std()-Y     TRUE
-## 6  6  tBodyAcc-std()-Z     TRUE
-## 7  7  tBodyAcc-mad()-X    FALSE
-## 8  8  tBodyAcc-mad()-Y    FALSE
 ```
 
 The logical vector in *Mean_Std* colomn will be used for subsetting  **Data_set** table into the appropriate columns. Finally, *TRUE* value columns will remain, while *FALSE* value columns will be deleted. Before subsetting we will add two values *TRUE*, *TRUE* in the beginning of vector **features_full$Mean_Std**, as the first two columns were added before and they do not need to be cancelled (see 1.1 and 1.2 steps).
 
-
-```r
+```{r,cache=TRUE}
 ## subsetting Data_set using features_full$Mean_Std logicl vector
 Data_set <- Data_set[ ,c(TRUE, TRUE, features_full$Mean_Std)]
 ```
 
 Finally, in the **Data_set** table we have only nesessary values of features, corresponding mean and standard deviation values. Dimension of the table is shown below:
 
-
-```r
+```{r,cache=TRUE}
 dim(Data_set)
-```
-
-```
-## [1] 10299    68
 ```
 
 3. Uses descriptive activity names to name the activities in the data set
 ---
 
-
-```r
+```{r,cache=TRUE}
 ## download data from activity_labels.txt from root "UCI HAR Dataset" folder into R 
 activity_labels <- read.table("UCI HAR Dataset/activity_labels.txt", sep = "", header = FALSE)
 ```
 
 This is an activity table, the activities are given in the second column of our main **Data_set** table. This is the description to activity. The **activity_labels** table contents is given below:
 
-
-```r
+```{r,cache=TRUE}
 activity_labels
-```
-
-```
-##   V1                 V2
-## 1  1            WALKING
-## 2  2   WALKING_UPSTAIRS
-## 3  3 WALKING_DOWNSTAIRS
-## 4  4            SITTING
-## 5  5           STANDING
-## 6  6             LAYING
 ```
 
 Change numbers in the second column of the **Data_set** to descriptive activity
 
-
-```r
+```{r,cache=TRUE}
 ## transfer from factor to character
 activity_labels[ ,2] <- as.character(activity_labels[ ,2])
 
@@ -219,26 +166,14 @@ for (i in 1:nrow(Data_set)) {
 
 Finally, we get the following **Data_set** table (first 5 columns are given):
 
-
-```r
+```{r}
 head(Data_set[ ,1:5])
-```
-
-```
-##   V1     V1.1      V1.2          V2          V3
-## 1  2 STANDING 0.2571778 -0.02328523 -0.01465376
-## 2  2 STANDING 0.2860267 -0.01316336 -0.11908252
-## 3  2 STANDING 0.2754848 -0.02605042 -0.11815167
-## 4  2 STANDING 0.2702982 -0.03261387 -0.11752018
-## 5  2 STANDING 0.2748330 -0.02784779 -0.12952716
-## 6  2 STANDING 0.2792199 -0.01862040 -0.11390197
 ```
 
 4. Appropriately labels the data set with descriptive variable names 
 ---
 
-
-```r
+```{r}
 ## create the table from features_full only with the names of features coordinating to measurements on the mean and standard deviation
 features_full <- features_full[features_full$Mean_Std, ]
 
@@ -248,19 +183,8 @@ names(Data_set) <- c("subject", "activity", features_full$V2)
 
 Finally, we get the following table **Data_set** (first 5 columns are given):
 
-
-```r
+```{r}
 head(Data_set[ ,1:5])
-```
-
-```
-##   subject activity tBodyAcc-mean()-X tBodyAcc-mean()-Y tBodyAcc-mean()-Z
-## 1       2 STANDING         0.2571778       -0.02328523       -0.01465376
-## 2       2 STANDING         0.2860267       -0.01316336       -0.11908252
-## 3       2 STANDING         0.2754848       -0.02605042       -0.11815167
-## 4       2 STANDING         0.2702982       -0.03261387       -0.11752018
-## 5       2 STANDING         0.2748330       -0.02784779       -0.12952716
-## 6       2 STANDING         0.2792199       -0.01862040       -0.11390197
 ```
 
 5. From the data set in step 4, creates a second, independent tidy data set with the average of each variable for each activity and each subject
@@ -268,14 +192,12 @@ head(Data_set[ ,1:5])
 
 In this part of a Course project a *dplyr* package was used.
 
-
-```r
+```{r, message=FALSE}
 ##  install.packages("dplyr")
 library(dplyr)
 ```
 
-
-```r
+```{r}
 ## create new data set
 Data_set_mean <- Data_set
 
@@ -288,43 +210,26 @@ Data_set_mean <- summarise_each(Data_set_mean, funs(mean))
 
 As now mean values of features are collected in **Data_set_mean**, it is better to rename these features in the columns:
 
-
-```r
+```{r}
 ## rename the columns by adding "mean(...)", to distinguish the columns in the table from the columns in the Data_set table
 names(Data_set_mean)[3:ncol(Data_set_mean)] <- paste("mean(", names(Data_set_mean)[3:ncol(Data_set_mean)], ")", sep = "")
 ```
 
 Finally, we get the following table **Data_set_mean** (first 3 columns are given):
 
-
-```r
+```{r}
 head(Data_set_mean[ ,1:3])
-```
-
-```
-## Source: local data frame [6 x 3]
-## Groups: subject
-## 
-##   subject           activity mean(tBodyAcc-mean()-X)
-## 1       1             LAYING               0.2215982
-## 2       1            SITTING               0.2612376
-## 3       1           STANDING               0.2789176
-## 4       1            WALKING               0.2773308
-## 5       1 WALKING_DOWNSTAIRS               0.2891883
-## 6       1   WALKING_UPSTAIRS               0.2554617
 ```
 
 This table's data were written in the file **Data_set_mean.txt**. It is located in this *repo*. The file was saved with the following options:
 
-
-```r
+```{r,cache=TRUE,message=FALSE}
 write.table(Data_set_mean, file = "Data_set_mean.txt", row.name=FALSE)
 ```
 
 For correct opening of file **Data_set_mean.txt** on your computer in R, copy it into the *work directory* and open use code:
 
-
-```r
+```{r,message=FALSE,error=FALSE}
 Data_set_mean <- read.table("Data_set_mean.txt", header = TRUE) 
 
 View(Data_set_mean)
