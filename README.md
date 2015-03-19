@@ -1,5 +1,5 @@
 ---
-title: "Code_book"
+title: "README"
 author: "Alexander Bukreev"
 e-mail: datasattva@yandex.com
 location: Beijing, China
@@ -211,9 +211,9 @@ Change numbers in the second column of the **Data_set** to descriptive activity
 ## transfer from factor to character
 activity_labels[ ,2] <- as.character(activity_labels[ ,2])
 
-## replace activity_lables
+## replace activity_lables & modification activity names 
 for (i in 1:nrow(Data_set)) {
-      Data_set[i, 2] <- activity_labels[Data_set[i, 2],2]
+      Data_set[i, 2] <- tolower(sub("_",".", activity_labels[Data_set[i, 2],2],))
 }
 ```
 
@@ -226,12 +226,12 @@ head(Data_set[ ,1:5])
 
 ```
 ##   V1     V1.1      V1.2          V2          V3
-## 1  2 STANDING 0.2571778 -0.02328523 -0.01465376
-## 2  2 STANDING 0.2860267 -0.01316336 -0.11908252
-## 3  2 STANDING 0.2754848 -0.02605042 -0.11815167
-## 4  2 STANDING 0.2702982 -0.03261387 -0.11752018
-## 5  2 STANDING 0.2748330 -0.02784779 -0.12952716
-## 6  2 STANDING 0.2792199 -0.01862040 -0.11390197
+## 1  2 standing 0.2571778 -0.02328523 -0.01465376
+## 2  2 standing 0.2860267 -0.01316336 -0.11908252
+## 3  2 standing 0.2754848 -0.02605042 -0.11815167
+## 4  2 standing 0.2702982 -0.03261387 -0.11752018
+## 5  2 standing 0.2748330 -0.02784779 -0.12952716
+## 6  2 standing 0.2792199 -0.01862040 -0.11390197
 ```
 
 4. Appropriately labels the data set with descriptive variable names 
@@ -255,12 +255,12 @@ head(Data_set[ ,1:5])
 
 ```
 ##   subject activity tBodyAcc-mean()-X tBodyAcc-mean()-Y tBodyAcc-mean()-Z
-## 1       2 STANDING         0.2571778       -0.02328523       -0.01465376
-## 2       2 STANDING         0.2860267       -0.01316336       -0.11908252
-## 3       2 STANDING         0.2754848       -0.02605042       -0.11815167
-## 4       2 STANDING         0.2702982       -0.03261387       -0.11752018
-## 5       2 STANDING         0.2748330       -0.02784779       -0.12952716
-## 6       2 STANDING         0.2792199       -0.01862040       -0.11390197
+## 1       2 standing         0.2571778       -0.02328523       -0.01465376
+## 2       2 standing         0.2860267       -0.01316336       -0.11908252
+## 3       2 standing         0.2754848       -0.02605042       -0.11815167
+## 4       2 standing         0.2702982       -0.03261387       -0.11752018
+## 5       2 standing         0.2748330       -0.02784779       -0.12952716
+## 6       2 standing         0.2792199       -0.01862040       -0.11390197
 ```
 
 5. From the data set in step 4, creates a second, independent tidy data set with the average of each variable for each activity and each subject
@@ -290,28 +290,28 @@ As now mean values of features are collected in **Data_set_mean**, it is better 
 
 
 ```r
-## rename the columns by adding "mean(...)", to distinguish the columns in the table from the columns in the Data_set table
-names(Data_set_mean)[3:ncol(Data_set_mean)] <- paste("mean(", names(Data_set_mean)[3:ncol(Data_set_mean)], ")", sep = "")
+## rename the columns by adding "aver." (Average), to distinguish the columns in the table from the columns in the Data_set table
+names(Data_set_mean)[3:ncol(Data_set_mean)] <- paste0("aver.", names(Data_set_mean)[3:ncol(Data_set_mean)])
 ```
 
-Finally, we get the following table **Data_set_mean** (first 3 columns are given):
+Finally, we get the following table **Data_set_mean** (first 4 columns are given):
 
 
 ```r
-head(Data_set_mean[ ,1:3])
+head(Data_set_mean[ ,1:4])
 ```
 
 ```
-## Source: local data frame [6 x 3]
+## Source: local data frame [6 x 4]
 ## Groups: subject
 ## 
-##   subject           activity mean(tBodyAcc-mean()-X)
-## 1       1             LAYING               0.2215982
-## 2       1            SITTING               0.2612376
-## 3       1           STANDING               0.2789176
-## 4       1            WALKING               0.2773308
-## 5       1 WALKING_DOWNSTAIRS               0.2891883
-## 6       1   WALKING_UPSTAIRS               0.2554617
+##   subject           activity aver.tBodyAcc-mean()-X aver.tBodyAcc-mean()-Y
+## 1       1             laying              0.2215982           -0.040513953
+## 2       1            sitting              0.2612376           -0.001308288
+## 3       1           standing              0.2789176           -0.016137590
+## 4       1            walking              0.2773308           -0.017383819
+## 5       1 walking.downstairs              0.2891883           -0.009918505
+## 6       1   walking.upstairs              0.2554617           -0.023953149
 ```
 
 This table's data were written in the file **Data_set_mean.txt**. It is located in this *repo*. The file was saved with the following options:
