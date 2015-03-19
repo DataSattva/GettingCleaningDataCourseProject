@@ -50,9 +50,9 @@ activity_labels <- read.table("UCI HAR Dataset/activity_labels.txt", sep = "", h
 ## transfer from factor to character
 activity_labels[ ,2] <- as.character(activity_labels[ ,2])
 
-## replace activity_lables
+## replace activity_lables & modification activity names
 for (i in 1:nrow(Data_set)) {
-      Data_set[i, 2] <- activity_labels[Data_set[i, 2],2]
+      Data_set[i, 2] <- tolower(sub("_",".", activity_labels[Data_set[i, 2],2],))
 }
 
 #     4. Appropriately labels the data set with descriptive variable names ====
@@ -80,8 +80,8 @@ Data_set_mean <- group_by(Data_set_mean, subject, activity)
 ## Create tidy data set with the average of each variable for each activity and each subject
 Data_set_mean <- summarise_each(Data_set_mean, funs(mean))
 
-## rename the columns by adding "mean(...)", to distinguish the columns in the table from the columns in the Data_set table
-names(Data_set_mean)[3:ncol(Data_set_mean)] <- paste("mean(", names(Data_set_mean)[3:ncol(Data_set_mean)], ")", sep = "")
+## rename the columns by adding "aver." (Average), to distinguish the columns in the table from the columns in the Data_set table
+names(Data_set_mean)[3:ncol(Data_set_mean)] <- paste0("aver.", names(Data_set_mean)[3:ncol(Data_set_mean)])
 
 View(Data_set_mean)
 

@@ -1,5 +1,5 @@
 ---
-title: "Code_book"
+title: "README"
 author: "Alexander Bukreev"
 e-mail: datasattva@yandex.com
 location: Beijing, China
@@ -158,9 +158,9 @@ Change numbers in the second column of the **Data_set** to descriptive activity
 ## transfer from factor to character
 activity_labels[ ,2] <- as.character(activity_labels[ ,2])
 
-## replace activity_lables
+## replace activity_lables & modification activity names 
 for (i in 1:nrow(Data_set)) {
-      Data_set[i, 2] <- activity_labels[Data_set[i, 2],2]
+      Data_set[i, 2] <- tolower(sub("_",".", activity_labels[Data_set[i, 2],2],))
 }
 ```
 
@@ -211,14 +211,14 @@ Data_set_mean <- summarise_each(Data_set_mean, funs(mean))
 As now mean values of features are collected in **Data_set_mean**, it is better to rename these features in the columns:
 
 ```{r}
-## rename the columns by adding "mean(...)", to distinguish the columns in the table from the columns in the Data_set table
-names(Data_set_mean)[3:ncol(Data_set_mean)] <- paste("mean(", names(Data_set_mean)[3:ncol(Data_set_mean)], ")", sep = "")
+## rename the columns by adding "aver." (Average), to distinguish the columns in the table from the columns in the Data_set table
+names(Data_set_mean)[3:ncol(Data_set_mean)] <- paste0("aver.", names(Data_set_mean)[3:ncol(Data_set_mean)])
 ```
 
-Finally, we get the following table **Data_set_mean** (first 3 columns are given):
+Finally, we get the following table **Data_set_mean** (first 4 columns are given):
 
 ```{r}
-head(Data_set_mean[ ,1:3])
+head(Data_set_mean[ ,1:4])
 ```
 
 This table's data were written in the file **Data_set_mean.txt**. It is located in this *repo*. The file was saved with the following options:

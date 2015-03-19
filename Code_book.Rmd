@@ -51,12 +51,12 @@ Each volunteer performed six activities (WALKING, WALKING_UPSTAIRS, WALKING_DOWN
 
 Data on 6 activities for each participant is given in the table.
 
-- 1 WALKING            
-- 2 WALKING_UPSTAIRS  
-- 3 WALKING_DOWNSTAIRS 
-- 4 SITTING           
-- 5 STANDING           
-- 6 LAYING  
+- 1 standing            
+- 2 walking.upstairs  
+- 3 walking.downstairs 
+- 4 sitting           
+- 5 standing           
+- 6 laying  
 
 ---
 
@@ -88,74 +88,76 @@ fBodyGyroJerkMag.*
 
 The set of variables that were estimated from these signals are: *mean(): Mean value* and *std(): Standard deviation*.
 
+The original feature vector names from the raw data were not changed in order to keep the linkage to it. The prefix "aver." (average) was added in the tidy data set.
+
 Finally, we have 33*2 = 66 variables in the table, which correspond its columns:
 
-- 1 mean(tBodyAcc-mean()-X)          
-- 2 mean(tBodyAcc-mean()-Y)          
-- 3 mean(tBodyAcc-mean()-Z)          
-- 4 mean(tBodyAcc-std()-X)           
-- 5 mean(tBodyAcc-std()-Y)           
-- 6 mean(tBodyAcc-std()-Z)           
-- 7 mean(tGravityAcc-mean()-X)       
-- 8 mean(tGravityAcc-mean()-Y)       
-- 9 mean(tGravityAcc-mean()-Z)       
-- 10 mean(tGravityAcc-std()-X)        
-- 11 mean(tGravityAcc-std()-Y)        
-- 12 mean(tGravityAcc-std()-Z)        
-- 13 mean(tBodyAccJerk-mean()-X)      
-- 14 mean(tBodyAccJerk-mean()-Y)      
-- 15 mean(tBodyAccJerk-mean()-Z)      
-- 16 mean(tBodyAccJerk-std()-X)       
-- 17 mean(tBodyAccJerk-std()-Y)       
-- 18 mean(tBodyAccJerk-std()-Z)       
-- 19 mean(tBodyGyro-mean()-X)         
-- 20 mean(tBodyGyro-mean()-Y)         
-- 21 mean(tBodyGyro-mean()-Z)         
-- 22 mean(tBodyGyro-std()-X)          
-- 23 mean(tBodyGyro-std()-Y)          
-- 24 mean(tBodyGyro-std()-Z)          
-- 25 mean(tBodyGyroJerk-mean()-X)     
-- 26 mean(tBodyGyroJerk-mean()-Y)     
-- 27 mean(tBodyGyroJerk-mean()-Z)     
-- 28 mean(tBodyGyroJerk-std()-X)      
-- 29 mean(tBodyGyroJerk-std()-Y)      
-- 30 mean(tBodyGyroJerk-std()-Z)      
-- 31 mean(tBodyAccMag-mean())         
-- 32 mean(tBodyAccMag-std())          
-- 33 mean(tGravityAccMag-mean())      
-- 34 mean(tGravityAccMag-std())       
-- 35 mean(tBodyAccJerkMag-mean())     
-- 36 mean(tBodyAccJerkMag-std())      
-- 37 mean(tBodyGyroMag-mean())        
-- 38 mean(tBodyGyroMag-std())         
-- 39 mean(tBodyGyroJerkMag-mean())    
-- 40 mean(tBodyGyroJerkMag-std())     
-- 41 mean(fBodyAcc-mean()-X)          
-- 42 mean(fBodyAcc-mean()-Y)          
-- 43 mean(fBodyAcc-mean()-Z)          
-- 44 mean(fBodyAcc-std()-X)           
-- 45 mean(fBodyAcc-std()-Y)           
-- 46 mean(fBodyAcc-std()-Z)           
-- 47 mean(fBodyAccJerk-mean()-X)      
-- 48 mean(fBodyAccJerk-mean()-Y)      
-- 49 mean(fBodyAccJerk-mean()-Z)      
-- 50 mean(fBodyAccJerk-std()-X)       
-- 51 mean(fBodyAccJerk-std()-Y)       
-- 52 mean(fBodyAccJerk-std()-Z)       
-- 53 mean(fBodyGyro-mean()-X)         
-- 54 mean(fBodyGyro-mean()-Y)         
-- 55 mean(fBodyGyro-mean()-Z)         
-- 56 mean(fBodyGyro-std()-X)          
-- 57 mean(fBodyGyro-std()-Y)          
-- 58 mean(fBodyGyro-std()-Z)       
-- 59 mean(fBodyAccMag-mean())     
-- 60 mean(fBodyAccMag-std())
-- 61 mean(fBodyBodyAccJerkMag-mean())
-- 62 mean(fBodyBodyAccJerkMag-std()) 
-- 63 mean(fBodyBodyGyroMag-mean())   
-- 64 mean(fBodyBodyGyroMag-std())    
-- 65 mean(fBodyBodyGyroJerkMag-mean())
-- 66 mean(fBodyBodyGyroJerkMag-std())
+- 1 aver.(tBodyAcc-mean()-X         
+- 2 aver.(tBodyAcc-mean()-Y         
+- 3 aver.(tBodyAcc-mean()-Z         
+- 4 aver.(tBodyAcc-std()-X          
+- 5 aver.(tBodyAcc-std()-Y          
+- 6 aver.(tBodyAcc-std()-Z          
+- 7 aver.(tGravityAcc-mean()-X      
+- 8 aver.(tGravityAcc-mean()-Y      
+- 9 aver.(tGravityAcc-mean()-Z      
+- 10 aver.(tGravityAcc-std()-X       
+- 11 aver.(tGravityAcc-std()-Y       
+- 12 aver.(tGravityAcc-std()-Z       
+- 13 aver.(tBodyAccJerk-mean()-X     
+- 14 aver.(tBodyAccJerk-mean()-Y     
+- 15 aver.(tBodyAccJerk-mean()-Z     
+- 16 aver.(tBodyAccJerk-std()-X      
+- 17 aver.(tBodyAccJerk-std()-Y      
+- 18 aver.(tBodyAccJerk-std()-Z      
+- 19 aver.(tBodyGyro-mean()-X        
+- 20 aver.(tBodyGyro-mean()-Y        
+- 21 aver.(tBodyGyro-mean()-Z        
+- 22 aver.(tBodyGyro-std()-X         
+- 23 aver.(tBodyGyro-std()-Y         
+- 24 aver.(tBodyGyro-std()-Z         
+- 25 aver.(tBodyGyroJerk-mean()-X    
+- 26 aver.(tBodyGyroJerk-mean()-Y    
+- 27 aver.(tBodyGyroJerk-mean()-Z    
+- 28 aver.(tBodyGyroJerk-std()-X     
+- 29 aver.(tBodyGyroJerk-std()-Y     
+- 30 aver.(tBodyGyroJerk-std()-Z     
+- 31 aver.(tBodyAccMag-mean()        
+- 32 aver.(tBodyAccMag-std()         
+- 33 aver.(tGravityAccMag-mean()     
+- 34 aver.(tGravityAccMag-std()      
+- 35 aver.(tBodyAccJerkMag-mean()    
+- 36 aver.(tBodyAccJerkMag-std()     
+- 37 aver.(tBodyGyroMag-mean()       
+- 38 aver.(tBodyGyroMag-std()        
+- 39 aver.(tBodyGyroJerkMag-mean()   
+- 40 aver.(tBodyGyroJerkMag-std()    
+- 41 aver.(fBodyAcc-mean()-X         
+- 42 aver.(fBodyAcc-mean()-Y         
+- 43 aver.(fBodyAcc-mean()-Z         
+- 44 aver.(fBodyAcc-std()-X          
+- 45 aver.(fBodyAcc-std()-Y          
+- 46 aver.(fBodyAcc-std()-Z          
+- 47 aver.(fBodyAccJerk-mean()-X     
+- 48 aver.(fBodyAccJerk-mean()-Y     
+- 49 aver.(fBodyAccJerk-mean()-Z     
+- 50 aver.(fBodyAccJerk-std()-X      
+- 51 aver.(fBodyAccJerk-std()-Y      
+- 52 aver.(fBodyAccJerk-std()-Z      
+- 53 aver.(fBodyGyro-mean()-X        
+- 54 aver.(fBodyGyro-mean()-Y        
+- 55 aver.(fBodyGyro-mean()-Z        
+- 56 aver.(fBodyGyro-std()-X         
+- 57 aver.(fBodyGyro-std()-Y         
+- 58 aver.(fBodyGyro-std()-Z      
+- 59 aver.(fBodyAccMag-mean()    
+- 60 aver.(fBodyAccMag-std()
+- 61 aver.(fBodyBodyAccJerkMag-mean()
+- 62 aver.(fBodyBodyAccJerkMag-std()
+- 63 aver.(fBodyBodyGyroMag-mean()  
+- 64 aver.(fBodyBodyGyroMag-std()   
+- 65 aver.(fBodyBodyGyroJerkMag-mean()
+- 66 aver.(fBodyBodyGyroJerkMag-std()
 
 ---
 
