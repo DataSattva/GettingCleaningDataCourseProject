@@ -66,25 +66,7 @@ Data on 6 activities for each participant is given in the table.
 
 Average value of a 66-feature vector with time and frequency domain variables are included in the data set. See footnote [2]. 
 
-These signals were used to estimate variables of the feature vector for each pattern ('-XYZ' is used to denote 3-axial signals in the X, Y and Z directions): 
-
-*tBodyAcc-XYZ, 
-tGravityAcc-XYZ, 
-tBodyAccJerk-XYZ, 
-tBodyGyro-XYZ, 
-tBodyGyroJerk-XYZ, 
-tBodyAccMag, 
-tGravityAccMag, 
-tBodyAccJerkMag, 
-tBodyGyroMag, 
-tBodyGyroJerkMag, 
-fBodyAcc-XYZ, 
-fBodyAccJerk-XYZ, 
-fBodyGyro-XYZ, 
-fBodyAccMag, 
-fBodyAccJerkMag, 
-fBodyGyroMag, 
-fBodyGyroJerkMag.*
+These signals were used to estimate variables of the feature vector for each pattern ('-XYZ' is used to denote 3-axial signals in the X, Y and Z directions): *tBodyAcc-XYZ, tGravityAcc-XYZ, tBodyAccJerk-XYZ, tBodyGyro-XYZ, tBodyGyroJerk-XYZ, tBodyAccMag, tGravityAccMag, tBodyAccJerkMag, tBodyGyroMag, tBodyGyroJerkMag, fBodyAcc-XYZ, fBodyAccJerk-XYZ, fBodyGyro-XYZ, fBodyAccMag, fBodyAccJerkMag, fBodyGyroMag, fBodyGyroJerkMag*.
 
 The set of variables that were estimated from these signals are: *mean(): Mean value* and *std(): Standard deviation*.
 
