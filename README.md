@@ -9,6 +9,9 @@ date: "March 2015"
 This is a README file for **Course Project** for the course [Getting and Cleaning Data](https://class.coursera.org/getdata-012). Getting and Cleaning Data is the part of the program [Data Science Specialization 
 of Johns Hopkins University] (https://www.coursera.org/specialization/jhudatascience/1).
 
+---
+---
+
 Assignment for the Course Project
 ===
 
@@ -31,6 +34,9 @@ You should create one R script called run_analysis.R that does the following.
 4. Appropriately labels the data set with descriptive variable names. 
 5. From the data set in step 4, creates a second, independent tidy data set with the average of each variable for each activity and each subject.
 
+---
+---
+
 Course Project
 ===
 
@@ -39,6 +45,8 @@ Course Project is placed in this repo. It includes: script file **run_analysis.R
 This repo does not include raw data. It can be downloaded on the link above. Script **run_analysis.R** must be run in the same directory, where *UCI HAR Dataset* with raw data is located.
 
 Below there is a description that explain what the analysis file did in RStudio.
+
+---
 
 1. Merges the training and the test sets to create one data set
 ---
@@ -102,6 +110,8 @@ dim(Data_set)
 ```
 ## [1] 10299   563
 ```
+
+---
 
 2. Extracts only the measurements on the mean and standard deviation for each measurement
 ---
@@ -178,6 +188,8 @@ dim(Data_set)
 ## [1] 10299    68
 ```
 
+---
+
 3. Uses descriptive activity names to name the activities in the data set
 ---
 
@@ -234,6 +246,8 @@ head(Data_set[ ,1:5])
 ## 6  2 standing 0.2792199 -0.01862040 -0.11390197
 ```
 
+---
+
 4. Appropriately labels the data set with descriptive variable names 
 ---
 
@@ -262,6 +276,8 @@ head(Data_set[ ,1:5])
 ## 5       2 standing         0.2748330       -0.02784779       -0.12952716
 ## 6       2 standing         0.2792199       -0.01862040       -0.11390197
 ```
+
+---
 
 5. From the data set in step 4, creates a second, independent tidy data set with the average of each variable for each activity and each subject
 ---

@@ -9,6 +9,9 @@ date: "March 2015"
 This is a README file for **Course Project** for the course [Getting and Cleaning Data](https://class.coursera.org/getdata-012). Getting and Cleaning Data is the part of the program [Data Science Specialization 
 of Johns Hopkins University] (https://www.coursera.org/specialization/jhudatascience/1).
 
+---
+---
+
 Assignment for the Course Project
 ===
 
@@ -31,6 +34,9 @@ You should create one R script called run_analysis.R that does the following.
 4. Appropriately labels the data set with descriptive variable names. 
 5. From the data set in step 4, creates a second, independent tidy data set with the average of each variable for each activity and each subject.
 
+---
+---
+
 Course Project
 ===
 
@@ -39,6 +45,8 @@ Course Project is placed in this repo. It includes: script file **run_analysis.R
 This repo does not include raw data. It can be downloaded on the link above. Script **run_analysis.R** must be run in the same directory, where *UCI HAR Dataset* with raw data is located.
 
 Below there is a description that explain what the analysis file did in RStudio.
+
+---
 
 1. Merges the training and the test sets to create one data set
 ---
@@ -95,6 +103,8 @@ After merging there appeared **Data_set** *data.frame* with dimension:
 dim(Data_set)
 ```
 
+---
+
 2. Extracts only the measurements on the mean and standard deviation for each measurement
 ---
 
@@ -138,6 +148,8 @@ Finally, in the **Data_set** table we have only nesessary values of features, co
 dim(Data_set)
 ```
 
+---
+
 3. Uses descriptive activity names to name the activities in the data set
 ---
 
@@ -170,6 +182,8 @@ Finally, we get the following **Data_set** table (first 5 columns are given):
 head(Data_set[ ,1:5])
 ```
 
+---
+
 4. Appropriately labels the data set with descriptive variable names 
 ---
 
@@ -186,6 +200,8 @@ Finally, we get the following table **Data_set** (first 5 columns are given):
 ```{r}
 head(Data_set[ ,1:5])
 ```
+
+---
 
 5. From the data set in step 4, creates a second, independent tidy data set with the average of each variable for each activity and each subject
 ---

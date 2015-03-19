@@ -36,17 +36,19 @@ View(Data_set_mean)
 
 ---
 
-### column #1 | subject
+column #1 | subject
+---
 
-*Class of variable: integer*
+**Class of variable: integer**
 
 Volunteers' numbers are from 1 to 30. The experiments have been carried out with a group of 30 volunteers within an age bracket of 19-48 years. See footnote [1].
 
 ---
 
-### column #2 | activity
+column #2 | activity
+---
 
-*Class of variable: factor*
+**Class of variable: factor**
 
 Each volunteer performed six activities (WALKING, WALKING_UPSTAIRS, WALKING_DOWNSTAIRS, SITTING, STANDING, LAYING) wearing a smartphone (Samsung Galaxy S II) on the waist. Using its embedded accelerometer and gyroscope, we captured 3-axial linear acceleration and 3-axial angular velocity at a constant rate of 50Hz. See footnote [1].
 
@@ -61,31 +63,13 @@ Data on 6 activities for each participant is given in the table.
 
 ---
 
-### columns from #3 to #68 | average of mean and standard deviation for each activity and each subject
+columns from #3 to #68 | average of mean and standard deviation for each activity and each subject
+---
 
-*Class of variables: numeric*
+**Class of variables: numeric**
 
 Average value of a 66-feature vector with time and frequency domain variables are included in the data set. See footnote [2]. 
 
-These signals were used to estimate variables of the feature vector for each pattern ('-XYZ' is used to denote 3-axial signals in the X, Y and Z directions): 
-
-*tBodyAcc-XYZ, 
-tGravityAcc-XYZ, 
-tBodyAccJerk-XYZ, 
-tBodyGyro-XYZ, 
-tBodyGyroJerk-XYZ, 
-tBodyAccMag, 
-tGravityAccMag, 
-tBodyAccJerkMag, 
-tBodyGyroMag, 
-tBodyGyroJerkMag, 
-fBodyAcc-XYZ, 
-fBodyAccJerk-XYZ, 
-fBodyGyro-XYZ, 
-fBodyAccMag, 
-fBodyAccJerkMag, 
-fBodyGyroMag, 
-fBodyGyroJerkMag.*
 These signals were used to estimate variables of the feature vector for each pattern ('-XYZ' is used to denote 3-axial signals in the X, Y and Z directions): *tBodyAcc-XYZ, tGravityAcc-XYZ, tBodyAccJerk-XYZ, tBodyGyro-XYZ, tBodyGyroJerk-XYZ, tBodyAccMag, tGravityAccMag, tBodyAccJerkMag, tBodyGyroMag, tBodyGyroJerkMag, fBodyAcc-XYZ, fBodyAccJerk-XYZ, fBodyGyro-XYZ, fBodyAccMag, fBodyAccJerkMag, fBodyGyroMag, fBodyGyroJerkMag*.
 
 The set of variables that were estimated from these signals are: *mean(): Mean value* and *std(): Standard deviation*.
@@ -163,7 +147,8 @@ Finally, we have 33*2 = 66 variables in the table, which correspond its columns:
 
 ---
 
-### Footnotes
+footnotes
+---
 
 **[1]**
 
