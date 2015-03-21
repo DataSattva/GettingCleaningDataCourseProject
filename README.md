@@ -147,7 +147,8 @@ According to *features_info.txt* mean and standard deviation values are labelled
 features_full$V2 <- as.character(features_full$V2)
 
 ## create logical vector in the new column "Mean_Std"
-features_full$Mean_Std <- ifelse(grepl("-mean()", features_full$V2, fixed = TRUE) | grepl("-std()", features_full$V2, fixed = TRUE), TRUE, FALSE) 
+features_full$Mean_Std <- ifelse(grepl("-mean()", features_full$V2, fixed = TRUE) 
+                  | grepl("-std()", features_full$V2, fixed = TRUE), TRUE, FALSE) 
 ```
 
 Here is the resulted table:
@@ -253,7 +254,8 @@ head(Data_set[ ,1:5])
 
 
 ```r
-## create the table from features_full only with the names of features coordinating to measurements on the mean and standard deviation
+## create the table from features_full only with the names of features coordinating
+## to measurements on the mean and standard deviation
 features_full <- features_full[features_full$Mean_Std, ]
 
 ## rename colomns in the main table
@@ -306,8 +308,10 @@ As now mean values of features are collected in **Data_set_mean**, it is better 
 
 
 ```r
-## rename the columns by adding "aver." (Average), to distinguish the columns in the table from the columns in the Data_set table
-names(Data_set_mean)[3:ncol(Data_set_mean)] <- paste0("aver.", names(Data_set_mean)[3:ncol(Data_set_mean)])
+## rename the columns by adding "aver." (Average), to distinguish the columns 
+## in the table from the columns in the Data_set table
+names(Data_set_mean)[3:ncol(Data_set_mean)] <- paste0("aver.", 
+                  names(Data_set_mean)[3:ncol(Data_set_mean)])
 ```
 
 Finally, we get the following table **Data_set_mean** (first 4 columns are given):
