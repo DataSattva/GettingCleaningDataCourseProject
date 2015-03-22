@@ -66,7 +66,8 @@ All row data of this zip-arhive is in the *UCI HAR Dataset* folder. After revisi
 X_test <- read.table("UCI HAR Dataset/test/X_test.txt", sep = "", header = FALSE)
 
 ## download data from UCI HAR Dataset/test/subject_test.txt 
-subject_test <- read.table("UCI HAR Dataset/test/subject_test.txt", sep = "", header = FALSE)
+subject_test <- read.table("UCI HAR Dataset/test/subject_test.txt", 
+                           sep = "", header = FALSE)
 
 ## download data from UCI HAR Dataset/test/y_test.txt 
 y_test <- read.table("UCI HAR Dataset/test/y_test.txt", sep = "", header = FALSE)
@@ -80,7 +81,8 @@ y_test <- read.table("UCI HAR Dataset/test/y_test.txt", sep = "", header = FALSE
 X_train <- read.table("UCI HAR Dataset/train/X_train.txt", sep = "", header = FALSE)
 
 ## download data from UCI HAR Dataset/train/subject_train.txt 
-subject_train <- read.table("UCI HAR Dataset/train/subject_train.txt", sep = "", header = FALSE)
+subject_train <- read.table("UCI HAR Dataset/train/subject_train.txt", 
+                            sep = "", header = FALSE)
 
 ## download data from UCI HAR Dataset/train/y_train.txt 
 y_train <- read.table("UCI HAR Dataset/train/y_train.txt", sep = "", header = FALSE)
@@ -118,8 +120,10 @@ dim(Data_set)
 
 
 ```r
-## download feature labels from features.txt from root "UCI HAR Dataset" folder into R
-features_full <- read.table("UCI HAR Dataset/features.txt", sep = "", header = FALSE)
+## download feature labels from features.txt from root 
+## "UCI HAR Dataset" folder into R
+features_full <- read.table("UCI HAR Dataset/features.txt", 
+                            sep = "", header = FALSE)
 ```
 
 The resulting table is **features_full**, and it contains the list of all *features*, which will be used as feature titles for naming 561 column of **Data_set**.
@@ -197,7 +201,8 @@ dim(Data_set)
 
 ```r
 ## download data from activity_labels.txt from root "UCI HAR Dataset" folder into R 
-activity_labels <- read.table("UCI HAR Dataset/activity_labels.txt", sep = "", header = FALSE)
+activity_labels <- read.table("UCI HAR Dataset/activity_labels.txt", 
+                              sep = "", header = FALSE)
 ```
 
 This is an activity table, the activities are given in the second column of our main **Data_set** table. This is the description to activity. The **activity_labels** table contents is given below:
@@ -300,7 +305,8 @@ Data_set_mean <- Data_set
 ## group table according to subject and activity
 Data_set_mean <- group_by(Data_set_mean, subject, activity)
 
-## Create tidy data set with the average of each variable for each activity and each subject
+## Create tidy data set with the average of each variable 
+## for each activity and each subject
 Data_set_mean <- summarise_each(Data_set_mean, funs(mean))
 ```
 
